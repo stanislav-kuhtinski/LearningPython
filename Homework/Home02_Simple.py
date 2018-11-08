@@ -50,7 +50,15 @@ print('\nValues in range 100 divided by 7: ', list_of_outputs)
 # Task 5 - delete some value in list
 some_data = ['to-delete', '1', 'to-delete', '2', '3', '4', 'to-delete', '5']
 print('\nOriginal list: ', some_data)
-# some_data = [data for data in some_data if data != 'to-delete']
+
+for item in some_data:
+    if item == 'to-delete':
+        some_data.remove(item)
+
+#some_data = [data for data in some_data if data != 'to-delete']
+
+""""
 while 'to-delete' in some_data:
     some_data.remove('to-delete')
+"""
 print('Corrected list: ', some_data)
