@@ -12,7 +12,7 @@ list_to_sort.sort()  # if you do not need the original list
 print('Sorted list 3 = ', list_to_sort)
 
 # Task2 - tuple with float numbers, find max and min value
-tuple_values = (0.23, 1.16, 0.001, 2.17, 0.02, -3.56, 12.22, 2.13, 3.43, 0.67,)
+tuple_values = (0.23, 1.16, 0.001, 2.17, 0.02, -3.56, 12.22, 2.13, 3.43, 0.67, )
 # print('Max value is ', max(tuple_values))
 # print('Min value is ', min(tuple_values))
 max_v = min_v = tuple_values[0]
