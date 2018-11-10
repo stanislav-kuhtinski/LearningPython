@@ -2,10 +2,26 @@ __author__ = 'stanislav-kuhtinski'
 import traceback
 
 
+# Task 7 - concat if str length is more then 3 symbols
+def smart_concat(*text, glue=':'):  # unlimited number of positional arguments and default value
+    result_string = ''
+    for phrase in text:
+        if len(phrase) > 3:
+            if not result_string:
+                result_string += phrase
+            else:
+                result_string += glue + phrase
+
+    return result_string
+
+
+print(smart_concat('spam', 'ham', 'eggs', 'school', 'escuela', 'may', 'Silly Sea'))
+
+
 # Task 6 - string to caps
 def transform_uppercase(some_string, flag=True):
     try:
-        if flag == True:
+        if flag:
             return str(some_string).upper()
         else:
             return str(some_string).lower()
@@ -18,7 +34,7 @@ print(transform_uppercase('Stanislav', False))
 
 
 # Task 5 - max and min
-def max_min(*numbers): #unlimited number of positional arguments
+def max_min(*numbers):  # unlimited number of positional arguments
     try:
         max_value = max(numbers)
         min_value = min(numbers)
@@ -97,3 +113,15 @@ def multiple_all(*numbers):
 
 
 multiple_all(-0.25, 12, 3, -0.01)
+
+
+def sum_difference(x, y):
+    if x > 0 and y > 0:
+        return x + y
+    if x < 0 and y < 0:
+        return x - y
+    # if x < 0 and y > 0:
+    return 0
+
+
+print('Result of sum_difference', sum_difference(5, -3))
