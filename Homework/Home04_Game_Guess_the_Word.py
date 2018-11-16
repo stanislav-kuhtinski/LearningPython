@@ -44,7 +44,7 @@ while answer_letter != 'exit':
     print('I have picked up a word, please guess letter by letter')
 
     for i in range(0, len(random_word) + lives_count - 1):
-        answer_letter = input("Please guess the letter: ")
+        answer_letter = input('Please guess the letter: ')
         print('The i is ', i)
         answer_word, match_found = match_letters(random_word, answer_letter, answer_word)
         if answer_word == random_word:
