@@ -25,7 +25,7 @@ def generate_random_word():
 def init_word_statuses(rnd_word):
     statuses = []
     print('\n!!!New game!!!')
-    # print('Random word is {}, its length is {}'.format(rnd_word, len(rnd_word)))
+    print('Random word is {}, its length is {}'.format(rnd_word, len(rnd_word)))
     for letter in rnd_word:
         statuses.append(False)
     return statuses
@@ -35,6 +35,11 @@ def check_word_statuses(rnd_word, answ_letter, statuses):
     if answ_letter not in rnd_word:
         print('Oops, this word does not contain this letter ', answ_letter)
         return False
+
+    for index, letter in enumerate(rnd_word):
+        if answ_letter == letter and statuses[index]:
+            print('Letter already present, please choose another one!')
+            return True
 
     for index, letter in enumerate(rnd_word):
         if answ_letter == letter:
@@ -114,6 +119,7 @@ def main():
                 break
             elif not result:
                 mistakes_counter += 1
+                print('Mistakes ', mistakes_counter)
 
         print_afterword(mistakes_counter, random_word)
 
