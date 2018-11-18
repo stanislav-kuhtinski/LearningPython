@@ -38,7 +38,7 @@ def check_word_statuses(rnd_word, answ_letter, statuses):
 
     for index, letter in enumerate(rnd_word):
         if answ_letter == letter and statuses[index]:
-            print('Letter already present, please choose another one!')
+            print('Letter already exist, please choose another one!')
             return True
 
     for index, letter in enumerate(rnd_word):
