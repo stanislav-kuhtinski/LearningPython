@@ -4,6 +4,49 @@ from datetime import datetime
 
 
 # --------------------------------------------------
+
+def exception_handler(func):
+    def wrapper(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except Exception as err:
+            print('Exception \'{}\' occured while running \'{}\''.format(err, func.__name__))
+
+    return wrapper
+
+
+@exception_handler
+def zero_divide(num):
+    return 1 / num
+
+
+@exception_handler
+def add_two_numbers(x, y):
+    sum = x + y
+    print(sum)
+    return sum
+
+
+# --------------------------------------------------
+# Task4. Logging decorator
+def log_activity(func):
+    print('Decorator has been called for function {}.'.format(func.__name__))
+
+    def wrapper(*args, **kwargs):
+        print('The initial function {} will execute now.'.format(func.__name__))
+        func(*args, **kwargs)
+        print('The initial function {} was executed.'.format(func.__name__))
+
+    return wrapper
+
+
+@log_activity
+def time_to_sleep(seconds):
+    import time
+    time.sleep(seconds)
+
+
+# --------------------------------------------------
 # Task3. Count the function execution times
 def count_executions(func):
     def wrapper(*args, **kwargs):
@@ -68,3 +111,6 @@ if __name__ == '__main__':
     # Basic functions:
     say_hello()
     slow_function()
+    time_to_sleep(4)
+    zero_divide()
+    add_two_numbers(1, 'a')
