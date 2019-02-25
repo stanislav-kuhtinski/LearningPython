@@ -36,7 +36,12 @@ def get_links(html_split):
 
 
 def clean_links(urls_list):
-    return None
+    for item in urls_list:
+        if any('css' in x for x in item):
+            print('{}: {} '.format(urls_list.index(item), item))
+            # urls_list.pop(urls_list.index(item))
+            del urls_list[urls_list.index(item)]
+    return urls_list
 
 
 def write_to_file(filename, content, mode='w'):
@@ -49,4 +54,6 @@ url_list = []
 html_bytes = get_webpage('http://habr.com/ru/')
 html_split = convert_html(html_bytes)
 urls_list = get_links(html_split)
-print(*urls_list, sep='\n')
+clean_urls_list = clean_links(urls_list)
+print('\n\n----------------------------------')
+# print(*clean_urls_list, sep='\n')
