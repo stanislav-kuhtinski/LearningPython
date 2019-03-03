@@ -36,11 +36,13 @@ def get_links(html_split):
 
 
 def clean_links(urls_list):
+    new_list = []
     for item in urls_list:
-        if any('css' in x for x in item):
+        if any('css' in x for x in item) or any('.js' in x for x in item):
             print('{}: {} '.format(urls_list.index(item), item))
             # urls_list.pop(urls_list.index(item))
-            del urls_list[urls_list.index(item)]
+            # del urls_list[urls_list.index(item)]
+            urls_list.remove(item)
     return urls_list
 
 
@@ -56,4 +58,4 @@ html_split = convert_html(html_bytes)
 urls_list = get_links(html_split)
 clean_urls_list = clean_links(urls_list)
 print('\n\n----------------------------------')
-# print(*clean_urls_list, sep='\n')
+print(*clean_urls_list, sep='\n')
